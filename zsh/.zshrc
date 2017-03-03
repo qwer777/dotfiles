@@ -1,3 +1,4 @@
+source $ZSHDIR/.zsh_opt
 source $ZLIB/git.zsh
 source $ZLIB/grep.zsh
 source $ZLIB/theme.zsh
