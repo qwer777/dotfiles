@@ -20,16 +20,6 @@ alias cp='cp -pr'
 alias rm='rm -dI'
 alias git='hub'
 
-#CD ALIASES
-alias ...='../..'
-alias ....='../../..'
-alias .....='../../../..'
-alias ......='../../../../..'
-alias .......='../../../../../..'
-alias ........='../../../../../../..'
-alias .........='../../../../../../../..'
-alias ..........='../../../../../../../../..'
-
 #GIT ALIASES
 alias g='git'
 alias ga='git add'
