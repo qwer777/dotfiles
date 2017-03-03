@@ -1,0 +1,108 @@
+#SPACE ALIASES: Don't store these commands in the history file
+alias kill=' kill'
+alias delhist=' delhist'
+alias alias=' alias'
+
+#SUDO ALIASES: Run these commands as root without having to type sudo
+alias su='sudo su'
+alias apt='sudo apt'
+alias reboot='sudo reboot'
+
+#OVERWRITE ALIASES:Overwrite a builtin command with something else
+alias history=' fc -fl 1'
+alias ls='ls -hAlF --group-directories-first --color=always'
+alias uptime='uptime -p'
+alias mkdir='mkdir -p'
+alias chown='chown -Rv'
+alias chmod='chmod -Rv'
+alias cp='cp -pr'
+alias rm='rm -dI'
+alias git='hub'
+
+#CD ALIASES
+alias ...='../..'
+alias ....='../../..'
+alias .....='../../../..'
+alias ......='../../../../..'
+alias .......='../../../../../..'
+alias ........='../../../../../../..'
+alias .........='../../../../../../../..'
+alias ..........='../../../../../../../../..'
+
+#GIT ALIASES
+alias g='git'
+alias ga='git add'
+alias gaa='git add --all'
+alias gs='git status'
+alias gc='git commit -v'
+alias gp='git push'
+alias gpo='git push origin'
+alias gpm='git push origin master'
+alias gl='git pull'
+alias glo='git pull origin'
+alias glm='git pull origin master'
+alias gca='git commit -am'
+
+#OTHER ALIASES
+alias ins='apt install'
+alias ax='chmod a+x'
+alias aptup='apt update && apt full-upgrade'
+alias aptsrch='apt search'
+alias cp1='rsync -avz --progress'
+alias please='sudo $(fc -l -n -1)'
+alias ghist='history|grep'
+alias mmv='noglob zmv -W'
+
+#FUNCTION ALIASES
+
+#Edit a file, then source it
+function edsrc()
+{
+while [[ $# -gt 0 ]]; do
+  $EDITOR $1 && . $1
+  shift
+done
+}
+
+#From https://justin.abrah.ms/dotfiles/zsh.html
+#Added the verbose flag to all tar commands, and changed 7zr to 7z
+function extract ()
+{
+    if [ -f $1 ] ; then
+        case $1 in
+            *.tar.bz2)        tar xvjf "$1"        ;;
+            *.tar.gz)         tar xvzf "$1"        ;;
+            *.bz2)            bunzip2 "$1"        ;;
+            *.rar)            unrar x "$1"        ;;
+            *.gz)             gunzip "$1"         ;;
+            *.tar)            tar xvf "$1"         ;;
+            *.tbz2)           tar xvjf "$1"        ;;
+            *.tgz)            tar xvzf "$1"        ;;
+            *.zip)            unzip "$1"          ;;
+            *.Z)              uncompress "$1"     ;;
+            *.7z)             7z e "$1"          ;;
+            *)                echo "'$1' cannot be extracted via extract()" ;;
+        esac
+    else
+        echo "'$1' is not a valid file"
+    fi
+}
+
+#From https://justin.abrah.ms/dotfiles/zsh.html
+psgrep() {
+    if [ ! -z $1 ] ; then
+        echo "Grepping for processes matching $1..."
+        ps aux | grep $1 | grep -v grep
+    else
+        echo "!! Need name to grep for"
+    fi
+}
+
+#Modified from https://justin.abrah.ms/dotfiles/zsh.html
+function ghget () 
+{
+USER=$(echo $@ | tr "/" " " | awk '{print $1}')
+REPO=$(echo $@ | tr "/" " " | awk '{print $2}')
+GHDIR=$HOME/github.com/$USER
+mkdir -p "$GHDIR" && cd "$GHDIR" && git clone git://github.com/$USER/$REPO.git
+}
