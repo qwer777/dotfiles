@@ -7,3 +7,4 @@ ZLIB=$ZDOTDIR/lib
 #ZSH SPECIFIC EXPORTS
 export HISTFILE=$HOME/.zhistory
 export SAVEHIST=$HISTSIZE
+source .env
