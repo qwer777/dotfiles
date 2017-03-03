@@ -1,3 +1,4 @@
+##This file is for shell agnostic aliases
 #SPACE ALIASES: Don't store these commands in the history file
 alias kill=' kill'
 alias delhist=' delhist'
@@ -50,9 +51,9 @@ alias aptup='apt update && apt full-upgrade'
 alias cp1='rsync -avz --progress'
 alias please='sudo $(fc -l -n -1)'
 alias ghist='history|grep'
+alias sudo='sudo ' #Allow aliases to be sudo'd
 
 #FUNCTION ALIASES
-
 #Edit a file, then source it
 function edsrc()
 {
