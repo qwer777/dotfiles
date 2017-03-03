@@ -1,0 +1,19 @@
+##This file is for setting zsh options
+setopt autocd
+setopt histexpiredupsfirst
+setopt incappendhistory
+setopt automenu
+setopt histignorealldups
+setopt histnostore
+setopt histsavenodups
+setopt sharehistory
+setopt histverify
+setopt histignorespace
+setopt correct
+setopt extendedglob
+setopt badpattern
+setopt globdots
+setopt markdirs
+setopt histreduceblanks
+unsetopt correctall 
+unsetopt caseglob
