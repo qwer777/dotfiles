@@ -1,10 +1,11 @@
 ##This file is for zsh specific environment settings
+source ../.env 
 #FILE LOCATIONS
-ZDOTDIR=$HOME/.zsh
-ZPLUG=$ZDOTDIR/plugins
-ZLIB=$ZDOTDIR/lib
+ZSHDIR=$DOTFILESDIR/zsh
+ZPLUG=$ZSHDIR/plugins
+ZLIB=$ZSHDIR/lib
 
 #ZSH SPECIFIC EXPORTS
 export HISTFILE=$HOME/.zhistory
 export SAVEHIST=$HISTSIZE
-source .env
+
