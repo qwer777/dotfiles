@@ -1,3 +1,4 @@
 ##This file is for zsh specific aliases
 alias mmv='noglob zmv -W'
 alias history=' fc -fl 1'
+source $HOME/.aliases
