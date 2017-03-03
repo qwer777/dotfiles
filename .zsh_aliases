@@ -1,0 +1,2 @@
+##This file is for zsh specific aliases
+alias mmv='noglob zmv -W'
