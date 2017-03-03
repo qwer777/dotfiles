@@ -1,4 +1,4 @@
-# Taken from Robby Russel's oh-my-zsh: https://github.com/robbyrussell/oh-my-zsh/blob/master/lib/git.zsh
+##Taken from Robby Russel's oh-my-zsh: https://github.com/robbyrussell/oh-my-zsh/blob/master/lib/git.zsh
 # Outputs current branch info in prompt format
 function git_prompt_info() {
   local ref
