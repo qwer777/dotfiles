@@ -1,13 +1,21 @@
 #!/bin/bash
-declare -a GitRepoArray=('qwer777/dotfiles' 'zsh-users/zsh-syntax-highlighting' 'zsh-users/zsh-history-substring-search' 'robbyrussell/oh-my-zsh')
-for i in "${GitRepoArray[@]}"
-do
-   GHUSER=$(echo $i | tr "/" " " | awk '{print $1}')
-   GHREPO=$(echo $i | tr "/" " " | awk '{print $2}')
-   if [ ! -d "$HOME/github.com/$GHUSER/$GHREPO" ]
-   then 
-      mkdir -p "$HOME/github.com/$GHUSER" && cd "$HOME/github.com/$GHUSER" && git clone https://github.com/$GHUSER/$GHREPO.git
-   else
-      echo "$i" already exists
-   fi
-done
+scriptfolder="$(dirname "${BASH_SOURCE}")"
+while read line;
+  do
+    GHUSER=$(echo $line | tr "/" " " | awk '{print $1}')
+    GHREPO=$(echo $line | tr "/" " " | awk '{print $2}')
+    if [ -e "$HOME/github.com/$GHUSER/$GHREPO" ]
+    then 
+      mv "$HOME/github.com/$GHUSER/$GHREPO" "$HOME/github.com/$GHUSER/$GHREPO.$(date +%F_%T)"
+    fi
+    mkdir -p "$HOME/github.com/$GHUSER" && cd "$HOME/github.com/$GHUSER" && git clone https://github.com/$GHUSER/$GHREPO.git
+done < "$scriptfolder/repolist"
+
+for link in $scriptfolder/symlink/*
+  do
+    basefile="$(basename "$link")"
+    if [ -e "$HOME/$basefile" ]
+      mv "$HOME/$basefile" "$HOME/$basefile.$(date +%F_%T)"
+    fi
+    cp -d "$link" "$HOME/$basefile"
+  done
