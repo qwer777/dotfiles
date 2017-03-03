@@ -10,7 +10,7 @@ alias apt='sudo apt'
 alias reboot='sudo reboot'
 
 #OVERWRITE ALIASES:Overwrite a builtin command with something else
-alias history=' fc -fl 1'
+
 alias ls='ls -hAlF --group-directories-first --color=always'
 alias uptime='uptime -p'
 alias mkdir='mkdir -p'
