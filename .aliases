@@ -18,7 +18,6 @@ alias chown='chown -Rv'
 alias chmod='chmod -Rv'
 alias cp='cp -pr'
 alias rm='rm -dI'
-alias git='hub'
 
 #GIT ALIASES
 alias g='git'
