@@ -91,6 +91,5 @@ function ghget ()
 {
 GHUSER=$(echo $@ | tr "/" " " | awk '{print $1}')
 GHREPO=$(echo $@ | tr "/" " " | awk '{print $2}')
-GHUSERDIR=$HOME/github.com/$GHUSER
-mkdir -p "$GHUSERDIR" && cd "$GHUSERDIR" && git clone https://github.com/$GHUSER/$GHREPO.git
+mkdir -p "$HOME/github.com/$GHUSER" && cd "$HOME/github.com/$GHUSER" && git clone https://github.com/$GHUSER/$GHREPO.git
 }
