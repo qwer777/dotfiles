@@ -1,4 +1,15 @@
 ##This file is for zsh specific aliases
+#CD ALIASES
+alias -g ...='../..'
+alias -g ....='../../..'
+alias -g .....='../../../..'
+alias -g ......='../../../../..'
+alias -g .......='../../../../../..'
+alias -g ........='../../../../../../..'
+alias -g .........='../../../../../../../..'
+alias -g ..........='../../../../../../../../..'
+
+#GENERAL ALIASES
 alias mmv='noglob zmv -W'
 alias history=' fc -fl 1'
 source $HOME/.aliases
