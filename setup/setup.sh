@@ -23,7 +23,7 @@ while read line;
 done < "$scriptfolder/repolist"
 
 #move symlinks to $HOME
-for link in $scriptfolder/symlink/*
+for link in $scriptfolder/symlinks/*
   do
     basefile="$(basename "$link")"
     if [ -e "$HOME/$basefile" ]
