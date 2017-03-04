@@ -1,6 +1,14 @@
 #!/bin/bash
 shopt -s nullglob dotglob     #To include hidden files
-scriptfolder="$(dirname "${BASH_SOURCE}")"
+scriptfolder="$HOME/github.com/qwer777/dotfiles/setup"
+
+#add the repo if it hasn't been already
+if [ ! -e "$HOME/github.com/qwer777/dotfiles" ]
+then
+    mkdir -p "$HOME/github.com/qwer777" && cd "$HOME/github.com/qwer777" && git clone https://github.com/qwer777/dotfiles.git
+fi    
+
+#add all necessary repos
 while read line;
   do
     GHUSER=$(echo $line | tr "/" " " | awk '{print $1}')
@@ -13,6 +21,7 @@ while read line;
     mkdir -p "$HOME/github.com/$GHUSER" && cd "$HOME/github.com/$GHUSER" && git clone https://github.com/$GHUSER/$GHREPO.git
 done < "$scriptfolder/repolist"
 
+#move symlinks to $HOME
 for link in $scriptfolder/symlink/*
   do
     basefile="$(basename "$link")"
