@@ -28,8 +28,9 @@ for link in $scriptfolder/symlinks/*
     basefile="$(basename "$link")"
     if [ -e "$HOME/$basefile" ]
       then
-        echo moving "$basefile" to "$basefile.$(date +%F_%T)"
+        echo Moving "$basefile" to "$basefile.$(date +%F_%T)"
         mv "$HOME/$basefile" "$HOME/$basefile.$(date +%F_%T)"
       fi
+    echo "Copying $basefile to $HOME"
     cp -d "$link" "$HOME/$basefile"
   done
