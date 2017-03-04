@@ -5,6 +5,7 @@ scriptfolder="$HOME/github.com/qwer777/dotfiles/setup"
 #add the repo if it hasn't been already
 if [ ! -e "$HOME/github.com/qwer777/dotfiles" ]
 then
+    echo "Adding the dotfiles repo by qwer777"
     mkdir -p "$HOME/github.com/qwer777" && cd "$HOME/github.com/qwer777" && git clone https://github.com/qwer777/dotfiles.git
 fi    
 
