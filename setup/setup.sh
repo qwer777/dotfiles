@@ -1,36 +1,45 @@
 #!/bin/bash
 shopt -s nullglob dotglob     #To include hidden files
-scriptfolder="$HOME/github.com/qwer777/dotfiles/setup"
+##Variables
+GITDIR="$HOME/github.com"
+#In case anyone wants to fork it, you just have to change the USER and REPO here
+THISUSER=qwer777
+THISREPO=dotfiles
+scriptfolder="$GITDIR/$THISUSER/$THISREPO/setup"
 
 #add the repo if it hasn't been already
-if [ ! -e "$HOME/github.com/qwer777/dotfiles" ]
+if [ ! -d "$GITDIR/$THISUSER/$THISREPO" ]
 then
-    echo "Adding the dotfiles repo by qwer777"
-    mkdir -p "$HOME/github.com/qwer777" && cd "$HOME/github.com/qwer777" && git clone https://github.com/qwer777/dotfiles.git
+  RenameIfExists "$GITDIR/$THISUSER/$THISREPO"
+  echo "Adding the $THISREPO repo by $THISUSER into $GITDIR"
+  mkdir -p "$GITDIR/$THISUSER" && cd "$GITDIR/$THISUSER" && git clone https://github.com/$THISUSER/$THISREPO.git
 fi    
 
-#add all necessary repos
+#add all necessary repos from RepoList file
 while read line;
-  do
-    GHUSER=$(echo $line | tr "/" " " | awk '{print $1}')
-    GHREPO=$(echo $line | tr "/" " " | awk '{print $2}')
-    if [ -e "$HOME/github.com/$GHUSER/$GHREPO" ]
-    then 
-      echo moving "$line" to "$line.$(date +%F_%T)"
-      mv "$HOME/github.com/$GHUSER/$GHREPO" "$HOME/github.com/$GHUSER/$GHREPO.$(date +%F_%T)"
-    fi
-    mkdir -p "$HOME/github.com/$GHUSER" && cd "$HOME/github.com/$GHUSER" && git clone https://github.com/$GHUSER/$GHREPO.git
-done < "$scriptfolder/repolist"
+do
+  GHUSER=$(echo $line | tr "/" " " | awk '{print $1}')
+  GHREPO=$(echo $line | tr "/" " " | awk '{print $2}')
+  RenameIfExists "$GITDIR/$GHUSER/$GHREPO"
+  mkdir -p "$GITDIR/$GHUSER" && cd "$GITDIR/$GHUSER" && git clone https://github.com/$GHUSER/$GHREPO.git
+done < "$scriptfolder/RepoList"
 
-#move symlinks to $HOME
+#copy symlinks to $HOME
 for link in $scriptfolder/symlinks/*
-  do
-    basefile="$(basename "$link")"
-    if [ -e "$HOME/$basefile" ]
-      then
-        echo Moving "$basefile" to "$basefile.$(date +%F_%T)"
-        mv "$HOME/$basefile" "$HOME/$basefile.$(date +%F_%T)"
-      fi
-    echo "Copying $basefile to $HOME"
-    cp -d "$link" "$HOME/$basefile"
-  done
+do
+  basefile="$(basename "$link")"
+  RenameIfExists "$HOME/$basefile"
+  echo "Copying $basefile to $HOME"
+  cp -d "$link" "$HOME/$basefile"
+done
+
+##Functions
+#Rename anything we're looking for that exists to $name.YYYY-MM-DD_HH:MM:SS
+RenameIfExists ()
+{
+if [ -e "$1" ]
+then 
+  echo moving "$1" to "$1.$(date +%F_%T)"
+  mv "$1" "$1.$(date +%F_%T)"
+fi  
+}
