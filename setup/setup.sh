@@ -68,7 +68,7 @@ do
   real_file=$(echo "$expanded_line" | tr "=" " " | awk '{print $1}')
   link_file=$(echo "$expanded_line" | tr "=" " " | awk '{print $2}')
   rename_if_exists "$link_file"
-  echo "Copying $real_file to $link_file"
+  echo "Linking $real_file to $link_file"
   ln -s "$real_file" "$link_file"
 done < "$SYMLINK_FILE_LIST"
 }
