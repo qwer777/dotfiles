@@ -45,8 +45,7 @@ done
 
 #Main function
 main() {
-#add_gh_repo "$THIS_USER/$THIS_REPO"
-rename_if_exists "$GIT_DIR/$THIS_USER/$THIS_REPO" && cd "$GIT_DIR/$THIS_USER" && git clone -q -b testing https://github.com/$THIS_USER/$THIS_REPO.git
+add_gh_repo "$THIS_USER/$THIS_REPO"
 add_gh_repos_from_file "$GH_REPO_LIST_FILE"
 symlink_files
 }
