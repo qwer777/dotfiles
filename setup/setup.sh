@@ -7,7 +7,10 @@ THIS_REPO=dotfiles
 GIT_DIR="$HOME/git" #Folder all repos are installed to
 THIS_SCRIPT_FOLDER="$GIT_DIR/$THIS_USER/$THIS_REPO/setup" #Folder this script is in
 COPY_TO_HOME_FOLDER="$THIS_SCRIPT_FOLDER/COPY_TO_HOME" #Folder that contains the files to copy to $HOME
-GH_REPO_LIST_FILE="$THIS_SCRIPT_FOLDER/RepoList" #File containing the list of GitHub repos in the form of USER/REPO on each line
+LINK_TO_HOME_FILE="$THIS_SCRIPT_FOLDER/SYMLINK_LIST"
+GH_REPO_LIST_FILE="$THIS_SCRIPT_FOLDER/REPO_LIST" #File containing the list of GitHub repos in the form of USER/REPO on each line
+DOTFILES_HOME_FOLDER="$HOME/.dotfiles" #Folder this repo will be linked to for easy access
+SYMLINK_FILE_LIST="$THIS_SCRIPT_FOLDER/SYMLINK_LIST" #List of symlinks
 
 ##Functions
 #add Github repos
@@ -44,16 +47,30 @@ done
 main() {
 add_gh_repo "$THIS_USER/$THIS_REPO"
 add_gh_repos_from_file "$GH_REPO_LIST_FILE"
-copy_to_home
+symlink_files
 }
- 
+
 #Rename anything we're looking for that exists to $name.YYYY-MM-DD_HH:MM:SS
 rename_if_exists () {
 if [ -e "$1" ]
-then 
+then
   echo moving "$1" to "$1.$(date +%F_%T)"
   mv "$1" "$1.$(date +%F_%T)"
-fi  
+fi
+}
+
+#make symlinks of files in this repo from a list
+#LIST FORMAT:Each line is formated as '$REAL_LOCATION=$SYMLINK_LOCATION
+symlink_files () {
+while read line;
+do
+  eval expanded_line="$line"
+  real_file=$(echo "$expanded_line" | tr "=" " " | awk '{print $1}')
+  link_file=$(echo "$expanded_line" | tr "=" " " | awk '{print $2}')
+  rename_if_exists "$link_file"
+  echo "Copying $real_file to $link_file"
+  ln -s "$real_file" "$link_file"
+done < "$SYMLINK_FILE_LIST"
 }
 
 main "$@"
