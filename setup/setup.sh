@@ -6,7 +6,6 @@ THIS_USER=qwer777
 THIS_REPO=dotfiles
 GIT_DIR="$HOME/git" #Folder all repos are installed to
 THIS_SCRIPT_FOLDER="$GIT_DIR/$THIS_USER/$THIS_REPO/setup" #Folder this script is in
-COPY_TO_HOME_FOLDER="$THIS_SCRIPT_FOLDER/COPY_TO_HOME" #Folder that contains the files to copy to $HOME
 LINK_TO_HOME_FILE="$THIS_SCRIPT_FOLDER/SYMLINK_LIST"
 GH_REPO_LIST_FILE="$THIS_SCRIPT_FOLDER/REPO_LIST" #File containing the list of GitHub repos in the form of USER/REPO on each line
 DOTFILES_HOME_FOLDER="$HOME/.dotfiles" #Folder this repo will be linked to for easy access
@@ -24,7 +23,8 @@ cd "$GIT_DIR/$gh_user"
 git clone -q https://github.com/$gh_user/$gh_repo.git
 }
 
-#add all GitHub repos from $GH_REPO_LIST_FILE file
+#add GitHub repos from file
+#LIST FORMAT:Each line is formated as '$USER/$REPO'
 add_gh_repos_from_file () {
 while read line;
 do
@@ -32,22 +32,11 @@ do
 done < "$1"
 }
 
-#copy items to $HOME
-copy_to_home () {
-for item in $COPY_TO_HOME_FOLDER/*
-do
-  basefile="$(basename "$item")"
-  rename_if_exists "$HOME/$basefile"
-  echo "Copying $basefile to $HOME"
-  cp -d "$item" "$HOME/$basefile"
-done
-}
-
 #Main function
 main() {
 add_gh_repo "$THIS_USER/$THIS_REPO"
 add_gh_repos_from_file "$GH_REPO_LIST_FILE"
-symlink_files
+symlink_files "$SYMLINK_FILE_LIST"
 }
 
 #Rename anything we're looking for that exists to $name.YYYY-MM-DD_HH:MM:SS
@@ -70,7 +59,7 @@ do
   rename_if_exists "$link_file"
   echo "Linking $real_file to $link_file"
   ln -s "$real_file" "$link_file"
-done < "$SYMLINK_FILE_LIST"
+done < "$1"
 }
 
 main "$@"
