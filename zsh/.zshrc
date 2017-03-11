@@ -3,6 +3,7 @@ source $ZLIB/git.zsh
 source $ZLIB/grep.zsh
 source $ZLIB/theme.zsh
 source $ZSHDIR/themes/theme.zsh-theme
+source $DOTFILESDIR/.rc
 autoload -U compinit && compinit
 autoload -U bashcompinit && bashcompinit
 autoload -U zmv
