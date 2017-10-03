@@ -4,22 +4,22 @@ shopt -s nullglob dotglob     #To include hidden files
 #In case anyone wants to fork it, you just have to change the USER and REPO here
 THIS_USER=qwer777
 THIS_REPO=dotfiles
-GIT_DIR="$HOME/github.com" #Folder all repos are installed to
-THIS_SCRIPT_FOLDER="$GIT_DIR/$THIS_USER/$THIS_REPO/setup" #Folder this script is in
-LINK_TO_HOME_FILE="$THIS_SCRIPT_FOLDER/Symlink_List"
-GH_REPO_LIST_FILE="$THIS_SCRIPT_FOLDER/Repo_List" #File containing the list of GitHub repos in the form of USER/REPO on each line
+GITHUB_DIR="$HOME/github.com" #Folder all repos are installed to
+SETUP_FOLDER="$GITHUB_DIR/$THIS_USER/$THIS_REPO/setup" #Folder this script is in
+LINK_TO_HOME_FILE="$SETUP_FOLDER/Symlink_List"
+GH_REPO_LIST_FILE="$SETUP_FOLDER/Repo_List" #File containing the list of GitHub repos in the form of USER/REPO on each line
 DOTFILES_HOME_FOLDER="$HOME/.dotfiles" #Folder this repo will be linked to for easy access
-SYMLINK_FILE_LIST="$THIS_SCRIPT_FOLDER/Symlink_List" #List of symlinks
+SYMLINK_FILE_LIST="$SETUP_FOLDER/Symlink_List" #List of symlinks
 
 ##Functions
 #add Github repos
 add_gh_repo () {
 gh_user=$(echo $1 | tr "/" " " | awk '{print $1}')
 gh_repo=$(echo $1 | tr "/" " " | awk '{print $2}')
-rename_if_exists "$GIT_DIR/$gh_user/$gh_repo"
-echo "Adding the $gh_repo repo by $gh_user into $GIT_DIR"
-mkdir -p "$GIT_DIR/$gh_user"
-cd "$GIT_DIR/$gh_user"
+rename_if_exists "$GITHUB_DIR/$gh_user/$gh_repo"
+echo "Adding the $gh_repo repo by $gh_user into $GITHUB_DIR"
+mkdir -p "$GITHUB_DIR/$gh_user"
+cd "$GITHUB_DIR/$gh_user"
 git clone -q https://github.com/$gh_user/$gh_repo.git
 }
 
