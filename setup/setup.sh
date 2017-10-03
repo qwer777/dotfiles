@@ -2,7 +2,7 @@
 shopt -s nullglob dotglob     #To include hidden files
 ##Variables
 #In case anyone wants to fork it, you just have to change the USER and REPO here
-THIS_USER=qwer777
+THIS_USER=umm6as
 THIS_REPO=dotfiles
 GITHUB_DIR="$HOME/github.com" #Folder all repos are installed to
 SETUP_FOLDER="$GITHUB_DIR/$THIS_USER/$THIS_REPO/setup" #Folder this script is in
