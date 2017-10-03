@@ -5,4 +5,4 @@ if [ -e "$line" ]
 then
   . "$line"
 fi
-done < "$DOTFILESDIR/LISTS/SOURCE_IF_EXISTS"
+done < "$DOTFILESDIR/Lists/Source_If_Exists"
