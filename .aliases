@@ -8,6 +8,9 @@ alias alias=' alias'
 alias su='sudo su'
 alias apt='sudo apt'
 alias reboot='sudo reboot'
+alias shutdown='sudo shutdown'
+alias fdisk='sudo fdisk'
+alias visudo='sudo visudo'
 
 #OVERWRITE ALIASES:Overwrite a builtin command with something else
 
