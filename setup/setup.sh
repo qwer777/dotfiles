@@ -4,7 +4,7 @@ shopt -s nullglob dotglob     #To include hidden files
 #In case anyone wants to fork it, you just have to change the USER and REPO here
 THIS_USER=qwer777
 THIS_REPO=dotfiles
-GIT_DIR="$HOME/git" #Folder all repos are installed to
+GIT_DIR="$HOME/github.com" #Folder all repos are installed to
 THIS_SCRIPT_FOLDER="$GIT_DIR/$THIS_USER/$THIS_REPO/setup" #Folder this script is in
 LINK_TO_HOME_FILE="$THIS_SCRIPT_FOLDER/SYMLINK_LIST"
 GH_REPO_LIST_FILE="$THIS_SCRIPT_FOLDER/REPO_LIST" #File containing the list of GitHub repos in the form of USER/REPO on each line
