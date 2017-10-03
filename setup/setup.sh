@@ -6,10 +6,10 @@ THIS_USER=qwer777
 THIS_REPO=dotfiles
 GIT_DIR="$HOME/github.com" #Folder all repos are installed to
 THIS_SCRIPT_FOLDER="$GIT_DIR/$THIS_USER/$THIS_REPO/setup" #Folder this script is in
-LINK_TO_HOME_FILE="$THIS_SCRIPT_FOLDER/SYMLINK_LIST"
-GH_REPO_LIST_FILE="$THIS_SCRIPT_FOLDER/REPO_LIST" #File containing the list of GitHub repos in the form of USER/REPO on each line
+LINK_TO_HOME_FILE="$THIS_SCRIPT_FOLDER/Symlink_List"
+GH_REPO_LIST_FILE="$THIS_SCRIPT_FOLDER/Repo_List" #File containing the list of GitHub repos in the form of USER/REPO on each line
 DOTFILES_HOME_FOLDER="$HOME/.dotfiles" #Folder this repo will be linked to for easy access
-SYMLINK_FILE_LIST="$THIS_SCRIPT_FOLDER/SYMLINK_LIST" #List of symlinks
+SYMLINK_FILE_LIST="$THIS_SCRIPT_FOLDER/Symlink_List" #List of symlinks
 
 ##Functions
 #add Github repos
