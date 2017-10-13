@@ -4,6 +4,7 @@ source $ZLIB/grep.zsh
 source $ZLIB/theme.zsh
 source $ZSHDIR/themes/theme.zsh-theme
 source $DOTFILESDIR/.rc
+fpath=($HOME/github.com/zsh-users/zsh-completions/src $fpath)
 autoload -U compinit && compinit
 autoload -U bashcompinit && bashcompinit
 autoload -U zmv
