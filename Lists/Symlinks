@@ -4,6 +4,7 @@ $DOTFILES_HOME_FOLDER/.env=$HOME/.env
 $DOTFILES_HOME_FOLDER/.exports=$HOME/.exports
 $DOTFILES_HOME_FOLDER/.nano=$HOME/.nano
 $DOTFILES_HOME_FOLDER/.nanorc=$HOME/.nanorc
+$DOTFILES_HOME_FOLDER/.screenrc=$HOME/.screenrc
 $DOTFILES_HOME_FOLDER/.path=$HOME/.path
 $DOTFILES_HOME_FOLDER/zsh/.zshenv=$HOME/.zshenv
 $DOTFILES_HOME_FOLDER/zsh/.zshrc=$HOME/.zshrc
