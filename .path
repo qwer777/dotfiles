@@ -1,5 +1,6 @@
 ##This file sets the PATH variable
 PATH="$HOME/bin"
+PATH="$PATH:$SHAREDBINDIR"
 PATH="$PATH:$HOME/go/bin"
 PATH="$PATH:/usr/local/go/bin"
 PATH="$PATH:/usr/local/sbin"

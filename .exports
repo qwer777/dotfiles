@@ -1,6 +1,9 @@
-##This file is for shell agnostic exports
+##This file is for shell agnostic environment variables
+export DOTFILESDIR=$HOME/.dotfiles
+export GHDIR=$HOME/github.com
+export SHAREDSOURCEDIR=/src
+export SHAREDBINDIR=$SHAREDSOURCEDIR/bin
+export GOBIN=$SHAREDBINDIR
+export GOROOT_FINAL=$SHAREDSOURCEDIR/go
 export EDITOR=nano
 export HISTSIZE='10000'
-export GOPATH=$HOME/go
-export GHDIR=$HOME/github.com
-export DOTFILESDIR=$HOME/.dotfiles
