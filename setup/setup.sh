@@ -6,7 +6,6 @@ THIS_USER=umm7yass
 THIS_REPO=dotfiles
 GITHUB_DIR="/src/github.com" #Folder all repos are installed to
 SETUP_FOLDER="$GITHUB_DIR/$THIS_USER/$THIS_REPO/setup" #Folder this script is in
-LINK_TO_HOME_FILE="$SETUP_FOLDER/Symlink_List"
 GH_REPO_LIST_FILE="$SETUP_FOLDER/Repo_List" #File containing the list of GitHub repos in the form of USER/REPO on each line
 DOTFILES_HOME_FOLDER="$HOME/.dotfiles" #Folder this repo will be linked to for easy access
 SYMLINK_FILE_LIST="$SETUP_FOLDER/Symlink_List" #List of symlinks
