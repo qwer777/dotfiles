@@ -3,7 +3,6 @@ source $ZLIB/git.zsh
 source $ZLIB/grep.zsh
 source $ZLIB/theme.zsh
 source $ZSHDIR/themes/theme.zsh-theme
-source $DOTFILESDIR/.rc
 fpath=($HOME/github.com/zsh-users/zsh-completions/src $fpath)
 # "-u" after compinit  is to ignore insecure directories
 autoload -U compinit && compinit -u
