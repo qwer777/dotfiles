@@ -1,8 +1,0 @@
-##This file is for shell agnostic interactive shell settings
-while read line;
-do
-if [ -e "$line" ]
-then
-  . "$line"
-fi
-done < "$DOTFILESDIR/Lists/Source_If_Exists"

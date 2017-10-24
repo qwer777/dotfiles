@@ -16,3 +16,4 @@ source $ZPLUG/zsh-history-substring-search/zsh-history-substring-search.zsh
 source $ZSHDIR/.zsh_aliases
 bindkey '\eOA' history-substring-search-up # or ^[OA 
 bindkey '\eOB' history-substring-search-down # or ^[OB
+source $DOTFILESDIR/.path

@@ -1,4 +1,5 @@
 ##This file sets the PATH variable
+OLD_PATH="$PATH"
 PATH="$HOME/bin"
 PATH="$PATH:$SHAREDBINDIR"
 PATH="$PATH:$HOME/go/bin"
@@ -10,4 +11,6 @@ PATH="$PATH:/usr/bin"
 PATH="$PATH:/sbin"
 PATH="$PATH:/bin"
 PATH="$PATH:."
-export PATH=$PATH
+PATH="$PATH:$OLD_PATH"
+PATH=`awk -F: '{for(i=1;i<=NF;i++){if(!($i in a)){a[$i];printf s$i;s=":"}}}'<<<$PATH`
+export PATH="$PATH"
