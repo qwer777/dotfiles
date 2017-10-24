@@ -5,7 +5,8 @@ source $ZLIB/theme.zsh
 source $ZSHDIR/themes/theme.zsh-theme
 source $DOTFILESDIR/.rc
 fpath=($HOME/github.com/zsh-users/zsh-completions/src $fpath)
-autoload -U compinit && compinit
+# "-u" after compinit  is to ignore insecure directories
+autoload -U compinit && compinit -u
 autoload -U bashcompinit && bashcompinit
 autoload -U zmv
 #case insensitive completion
