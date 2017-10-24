@@ -13,6 +13,15 @@ GH_REPO_LIST_FILE="$SETUP_FOLDER/Repo_List" #File containing the list of GitHub 
 DOTFILES_HOME_FOLDER="$HOME/.dotfiles" #Folder this repo will be linked to for easy access
 SYMLINK_FILE_LIST="$SETUP_FOLDER/Symlink_List" #List of symlinks
 
+#Rename anything we're looking for that exists to $name.YYYY-MM-DD_HH:MM:SS
+rename_if_exists () {
+if [ -e "$1" ]
+then
+  echo moving "$1" to "$1.$(date +%F_%T)"
+  mv "$1" "$1.$(date +%F_%T)"
+fi
+}
+
 #LIST FORMAT:Each line is formated as '$REAL_LOCATION=$SYMLINK_LOCATION
 symlink_files () {
 while read line;
